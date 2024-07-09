@@ -43,10 +43,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        ConsoleInput consoleInput = new ConsoleInput();
-        LottoMachine lottoMachine = new LottoMachine();
-        WinningResult winningResult = new WinningResult();
-        Application lottoGame = new Application(consoleInput, lottoMachine, winningResult);
+        AppConfig appConfig = new AppConfig();
+        Application lottoGame = appConfig.application();
         lottoGame.run();
     }
 }
