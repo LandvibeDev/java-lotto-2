@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+// cannot reslove symbol -> gradle rebuild로 해결
 
 import java.util.HashSet;
 import java.util.List;
