@@ -65,3 +65,4 @@ public class ConsoleInput {
         return bonusNumber;
     }
 }
+
