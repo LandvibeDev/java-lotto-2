@@ -1,15 +1,21 @@
 package lotto;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> cd87056d2fc1baa0c34b7a7c51dbcacd1b89af86
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
+<<<<<<< HEAD
     public Lotto(){
         numbers = new ArrayList<>();
     }
 
+=======
+>>>>>>> cd87056d2fc1baa0c34b7a7c51dbcacd1b89af86
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -20,6 +26,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+<<<<<<< HEAD
     public List<Integer> getNumbers(){
         return numbers;
     }
@@ -54,6 +61,8 @@ public class Lotto {
         }
         return 0;
     }
+=======
+>>>>>>> cd87056d2fc1baa0c34b7a7c51dbcacd1b89af86
 
     // TODO: 추가 기능 구현
 }
