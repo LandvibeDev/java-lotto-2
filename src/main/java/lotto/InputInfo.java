@@ -37,8 +37,7 @@ public class InputInfo { //사용자 입력 정보
                 if(check.chk_Input(str)) throw new IllegalArgumentException();
                 if(check.chk_Count(str)) throw new IllegalArgumentException();
             }
-            for(String s: str){ if(check.chk_Str(s)) throw new IllegalArgumentException(); }
-            for(String s: str){ if(check.chk_Range(Integer.parseInt(s))) throw new IllegalArgumentException(); }
+            for(String s: str){ if( check.chk_Str(s)) throw new IllegalArgumentException(); }
             if(check.chk_Duplication(str)) throw new IllegalArgumentException();
             userNumbers = changeNumbersType(str);
         }catch(IllegalArgumentException e){

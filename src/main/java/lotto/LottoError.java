@@ -3,7 +3,7 @@ package lotto;
 public enum LottoError {
 
     Str_Error("[ERROR] 입력한 값에 문자가 있습니다. 숫자를 입력해주세요."),
-    Neg_Error("[ERROR] 입력한 값이 0 또는 음수입니다. 로또 구매 금액은 양수여야 합니다."),
+    Neg_Error("[ERROR] 입력한 값이 음수입니다. 로또 구매 금액은 양수여야 합니다."),
     Mod_Error( "[ERROR] 로또 구매 금액은 1000원으로 나누어 떨어져야 합니다."),
     Count_Error("[ERROR] 당첨 번호는 6개의 숫자를 입력해야 합니다."),
     Range_Error("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다."),
