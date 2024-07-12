@@ -16,23 +16,26 @@ public class Application {
 
     public void run() {
         try {
-            int purchaseAmount = consoleInput.getPurchaseAmount();
-            int numberOfLottos = purchaseAmount / 1000;
-
-            List<Lotto> purchasedLottos = lottoMachine.generateLottos(numberOfLottos);
+            int purchaseAmount = getPurchaseAmount();
+            List<Lotto> purchasedLottos = generateLottos(purchaseAmount);
             printPurchasedLottos(purchasedLottos);
 
-            Set<Integer> winningNumbers = consoleInput.getWinningNumbers();
-            int bonusNumber = consoleInput.getBonusNumber(winningNumbers);
+            Set<Integer> winningNumbers = getWinningNumbers();
+            int bonusNumber = getBonusNumber(winningNumbers);
 
-            winningResult.checkWinning(purchasedLottos, winningNumbers, bonusNumber);
-            winningResult.printWinningResult();
-
-            double profitRate = winningResult.calculateProfitRate(purchaseAmount);
-            System.out.printf("총 수익률은 %.1f%%입니다.%n", profitRate);
+            checkAndPrintWinningResult(purchasedLottos, winningNumbers, bonusNumber, purchaseAmount);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
+    }
+
+    private int getPurchaseAmount() {
+        return consoleInput.getPurchaseAmount();
+    }
+
+    private List<Lotto> generateLottos(int purchaseAmount) {
+        int numberOfLottos = purchaseAmount / 1000;
+        return lottoMachine.generateLottos(numberOfLottos);
     }
 
     private void printPurchasedLottos(List<Lotto> lottos) {
@@ -40,6 +43,22 @@ public class Application {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    private Set<Integer> getWinningNumbers() {
+        return consoleInput.getWinningNumbers();
+    }
+
+    private int getBonusNumber(Set<Integer> winningNumbers) {
+        return consoleInput.getBonusNumber(winningNumbers);
+    }
+
+    private void checkAndPrintWinningResult(List<Lotto> purchasedLottos, Set<Integer> winningNumbers, int bonusNumber, int purchaseAmount) {
+        winningResult.checkWinning(purchasedLottos, winningNumbers, bonusNumber);
+        winningResult.printWinningResult();
+
+        double profitRate = winningResult.calculateProfitRate(purchaseAmount);
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", profitRate);
     }
 
     public static void main(String[] args) {
