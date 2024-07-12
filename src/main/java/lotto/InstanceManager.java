@@ -1,6 +1,6 @@
 package lotto;
 
-public class AppConfig {
+public class InstanceManager {
     public ConsoleInput consoleInput() {
         return new ConsoleInput();
     }

@@ -43,8 +43,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-        Application lottoGame = appConfig.application();
+        InstanceManager instanceManager = new InstanceManager();
+        Application lottoGame = instanceManager.application();
         lottoGame.run();
     }
 }
