@@ -1,19 +1,17 @@
 package lotto;
 
 public class InstanceManager {
-    public ConsoleInput consoleInput() {
-        return new ConsoleInput();
+    private final ConsoleInput consoleInput;
+    private final LottoMachine lottoMachine;
+    private final WinningResult winningResult;
+
+    public InstanceManager() {
+        this.consoleInput = new ConsoleInput();
+        this.lottoMachine = new LottoMachine();
+        this.winningResult = new WinningResult();
     }
 
-    public LottoMachine lottoMachine() {
-        return new LottoMachine();
-    }
-
-    public WinningResult winningResult() {
-        return new WinningResult();
-    }
-
-    public Application application() {
-        return new Application(consoleInput(), lottoMachine(), winningResult());
+    public LottoGame lottoGame() {
+        return new LottoGame(consoleInput, lottoMachine, winningResult);
     }
 }
