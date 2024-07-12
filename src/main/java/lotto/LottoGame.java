@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoGame {
+
+    private static final int LOTTO_PRICE = 1000;
     private final ConsoleInput consoleInput;
     private final LottoMachine lottoMachine;
     private final WinningResult winningResult;
@@ -34,7 +36,7 @@ public class LottoGame {
     }
 
     private List<Lotto> generateLottos(int purchaseAmount) {
-        int numberOfLottos = purchaseAmount / 1000;
+        int numberOfLottos = purchaseAmount / LOTTO_PRICE;
         return lottoMachine.generateLottos(numberOfLottos);
     }
 
