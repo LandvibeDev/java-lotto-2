@@ -1,6 +1,11 @@
 package lotto;
 
-import java.util.*;
+
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 public class WinningResult {
     private final Map<RankEnum, Integer> result = new EnumMap<>(RankEnum.class);
