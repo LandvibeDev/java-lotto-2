@@ -19,13 +19,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]로또 번호의 개수가 6개를 넘어가면 안됩니다.");
         }
-        for(int i=0;i<numbers.size();i++){
-            for(int j=0;j<numbers.size();j++){
-                if(numbers.get(i)==numbers.get(j)){
-                    throw new IllegalArgumentException("[ERROR]로또 번호에 중복된 숫자가 있으면 안됩니다.");
-                }
-            }
-        }
+
 
     } //당첨 번호 입력의 예외 처리
 

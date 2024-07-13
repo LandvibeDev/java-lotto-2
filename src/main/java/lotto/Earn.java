@@ -19,6 +19,7 @@ public class Earn {
         sum();
         int Lotto = lotto_value*1000;
         double total = (double)sum/Lotto*100;
+        total = Math.round(total*100)/100.0;
         System.out.println("총 수익률은 "+total+"%입니다.");
     }
 }
