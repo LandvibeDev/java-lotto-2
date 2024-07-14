@@ -38,11 +38,11 @@ public class Application {
         private final List<Integer> numbers;
 
         public Lotto(List<Integer> numbers) {
-            validate(numbers);
+            valid(numbers);
             this.numbers = numbers;
         }
 
-        private void validate(List<Integer> numbers) {
+        private void valid(List<Integer> numbers) {
             if (numbers.size() != 6) {
                 throw new IllegalArgumentException();
             }
@@ -53,7 +53,7 @@ public class Application {
         }
     }
 
-    public static List<Integer> generateRandomNumbers() {
+    public static List<Integer> MakeRandomNum() {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 1; i <= 45; i++) {
             numbers.add(i);
@@ -111,17 +111,17 @@ public class Application {
 
 
     void run() {
-        int purchaseAmount = getPurchaseAmount();
-        int num = calculateNumberOfLottos(purchaseAmount);
-        List<Lotto> lottos = generateLottos(num);
-        printLottos(lottos);
-        List<Integer> winningNumbers = getWinningNumbers();
-        int bonusNumber = getBonusNumber();
+        int purchaseAmount = PurchaseAmount();
+        int num = CalculateNumber(purchaseAmount);
+        List<Lotto> lottos = MakeLotto(num);
+        PrintLotto(lottos);
+        List<Integer> winningNumbers = PickNumbers();
+        int bonusNumber = BonusNumber();
         double totalWinnings = check(lottos, winningNumbers, bonusNumber);
-        calculateAndPrintProfitRate(purchaseAmount, totalWinnings);
+        PrintProfitRate(purchaseAmount, totalWinnings);
     }
 
-    private int getPurchaseAmount() {
+    private int PurchaseAmount() {
         System.out.println("구입 금액을 입력해 주세요.");
         while (true) {
             try {
@@ -139,22 +139,22 @@ public class Application {
         }
     }
 
-    private int calculateNumberOfLottos(int purchaseAmount) {
+    private int CalculateNumber(int purchaseAmount) {
         int num = purchaseAmount / LOTTO_PRICE;
         System.out.printf("%d개를 구매했습니다.\n", num);
         return num;
     }
 
-    private List<Lotto> generateLottos(int num) {
+    private List<Lotto> MakeLotto(int num) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < num; i++) {
-            List<Integer> randomNumbers = generateRandomNumbers();
+            List<Integer> randomNumbers = MakeRandomNum();
             lottos.add(new Lotto(randomNumbers));
         }
         return lottos;
     }
 
-    private void printLottos(List<Lotto> lottos) {
+    private void PrintLotto(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             bubbleSort(lotto.getNumbers());
             System.out.println(lotto.getNumbers());
@@ -175,17 +175,17 @@ public class Application {
     }
 
 
-    private List<Integer> getWinningNumbers() {
+    private List<Integer> PickNumbers() {
         System.out.println("당첨 번호를 입력해주세요.");
         return readNumbers();
     }
 
-    private int getBonusNumber() {
+    private int BonusNumber() {
         System.out.println("보너스 번호를 입력해주세요.");
         return readBonusNumber();
     }
 
-    private void calculateAndPrintProfitRate(int purchaseAmount, double totalWinnings) {
+    private void PrintProfitRate(int purchaseAmount, double totalWinnings) {
         double totalPurchase = purchaseAmount;
         double profitRate = (totalWinnings / totalPurchase) * 100;
         System.out.printf("총 수익률은 %.1f%%입니다.\n", profitRate);
