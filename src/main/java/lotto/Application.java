@@ -156,10 +156,24 @@ public class Application {
 
     private void printLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            Collections.sort(lotto.getNumbers());
+            bubbleSort(lotto.getNumbers());
             System.out.println(lotto.getNumbers());
         }
     }
+
+    private void bubbleSort(List<Integer> numbers) {
+        int n = numbers.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (numbers.get(j) > numbers.get(j + 1)) {
+                    int temp = numbers.get(j);
+                    numbers.set(j, numbers.get(j + 1));
+                    numbers.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
 
     private List<Integer> getWinningNumbers() {
         System.out.println("당첨 번호를 입력해주세요.");
