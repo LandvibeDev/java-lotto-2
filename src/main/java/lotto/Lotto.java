@@ -29,8 +29,8 @@ public class Lotto {
         boolean bonusFlag = false;
         for(int userNum : userNumbers){
             for(int num : numbers){
-                if(userNum == num) cnt++;
-                if(userNum == bonus) bonusFlag = true;
+                if(num == userNum) cnt++;
+                if(num == bonus) bonusFlag = true;
             }
         }
         rank = checkRank(cnt, bonusFlag);
