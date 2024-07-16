@@ -32,7 +32,7 @@ public class Lotto {
                 if(num == userNum) cnt++;
                 if(num == bonus) bonusFlag = true;
             }
-        }
+        } 
         rank = checkRank(cnt, bonusFlag);
         return rank;
     }
