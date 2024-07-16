@@ -1,4 +1,9 @@
-package lotto;
+package lotto.controller;
+
+import lotto.model.LottoMachine;
+import lotto.model.WinningResult;
+import lotto.view.ConsoleInput;
+import lotto.view.LottoGame;
 
 public class InstanceManager {
     private final ConsoleInput consoleInput;

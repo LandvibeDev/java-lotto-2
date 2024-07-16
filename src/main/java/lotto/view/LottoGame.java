@@ -1,4 +1,9 @@
-package lotto;
+package lotto.view;
+
+import lotto.model.Lotto;
+import lotto.model.LottoMachine;
+import lotto.model.WinningResult;
+import lotto.view.ConsoleInput;
 
 import java.util.List;
 import java.util.Set;
