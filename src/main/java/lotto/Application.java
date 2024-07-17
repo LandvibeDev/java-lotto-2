@@ -1,38 +1,26 @@
 package lotto;
-import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 public class Application {
     public static void main(String[] args) {
-        Input_Lotto_count count = new Input_Lotto_count();
-        int lotto_count = count.Input();
-        Output_Lotto_count Ocount = new Output_Lotto_count(lotto_count);
-        Ocount.Random();
-        List<Integer>[] arr = Ocount.arr; //로또 번호 리스트들을 담은 배열
-        List<Integer> DangList = InputDangchum();
+        Input_Lotto_count inputLottoCount = new Input_Lotto_count();
+        int lotto_count = inputLottoCount.Input(); //산 로또 개수
+        Output_Random_Lotto outputRandomLotto = new Output_Random_Lotto(lotto_count);
+        outputRandomLotto.Random();
+        List<Integer>[] arr = outputRandomLotto.arr; //로또 번호 리스트들을 담은 배열
+        InputDangchum inputDangchum = new InputDangchum();
+        List<Integer> DangList = inputDangchum.InputDangchumm(); //당첨번호 리스트
         Lotto lotto = new Lotto(DangList,arr);
-
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String bonus = Console.readLine();
-        lotto.vonus = bonus;
-        lotto.compare1();
-        lotto.output();
+        String bonus = InputDangchum.Bonus_num(); //보너스 번호 입력하기
+        lotto.vonus = bonus; //로또에 보너스 번호 넘겨주기.
+        lotto.listFor(); //랜덤번호와 당첨번호 비교하기.
         int[] num = lotto.lotto_count;
+        Output_Result outputResult = new Output_Result();
+        Output_Result.output(num);
         Earn earn = new Earn(num,lotto_count);
 
         earn.output();
 
     }
-//당첨번호를 입력하여 리스트에 저장하는 함수
-    public static List<Integer> InputDangchum(){ //당첨번호를 입력하는 함수
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String dangchum = Console.readLine();
-        String[] dangchumm = dangchum.split(",");
-        List<Integer> dangArr = new ArrayList<>();
-        for(int i=0;i<dangchumm.length;i++){
-            dangArr.add(Integer.parseInt(dangchumm[i]));
-        } //(int)로 명시적형변환하는 것은 기본형끼리 이루어져야하기에 안됨.
-        return dangArr;
-    }
+
 }

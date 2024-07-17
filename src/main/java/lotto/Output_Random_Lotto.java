@@ -3,10 +3,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Collections;
 //구매한 로또 개수와 랜덤 로또 번호 출력하는 클래스
-public class Output_Lotto_count {
+public class Output_Random_Lotto {
     int count;
     List<Integer>[] arr; //배열안에 리스트 저장
-    Output_Lotto_count(int count){
+    Output_Random_Lotto(int count){
         arr = new List[count];
         this.count = count;
     }

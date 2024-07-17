@@ -23,25 +23,26 @@ public class Lotto {
 
     } //당첨 번호 입력의 예외 처리
 
-    void compare1(){
+    void listFor(){ //랜덤으로 받은 로또번호 리스트 갯수만큼 for문 돌리는 코드. 만약 8개 당첨번호 리스트가 있으면 8개의 리스트를 쭉 돌면서 비교해보는 코드 
 
         for(int i=0;i<randoms.length;i++){
-           compare2(randoms[i]); //arr에는 몇개 일치하는지 정보가 들음
+           compare(randoms[i]); 
 
         }
     }
-    int compare2(List<Integer> random){
+    //lotto_count 배열에 일치하는게 5개면 [4]에 1 추가, 이런식으로 비교해나가면서 배열에 값을 추가하는 함수.
+    int compare(List<Integer> random){
         int count=0;
             for(int j=0;j<6;j++){
 
                 if(numbers.contains(random.get(j))){ //리스트에 특정 값이 포함되어 있는지 확인
-                    count++;
+                    count++; //특정 값이 있으면 count 수를 올림.
                 }
 
             }
             if(count>=3){
                 int bonusNum = Integer.parseInt(vonus);
-                if(count==5&&random.contains(bonusNum)){
+                if(count==5&&random.contains(bonusNum)){ //보너스 + 5개 맞추면 
                     lotto_count[5]+=1;
                 }
                 else if(count==5){
@@ -54,21 +55,7 @@ public class Lotto {
              }
             return count;
         }
-        void output(){
-            System.out.println("당첨 통계\n---");
-            System.out.println("3개 일치 (5,000원) - "+lotto_count[2]+"개");
-            System.out.println("4개 일치 (50,000원) - "+lotto_count[3]+"개");
-            System.out.println("5개 일치 (1,500,000원) - "+lotto_count[4]+"개");
-            System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+lotto_count[5]+"개");
-            System.out.println("6개 일치, 보너스 볼 일치 (2,000,000,000원) - "+lotto_count[6]+"개");
-        }
-        //이 코드와 Dollars 라는 enum코드를 추가하면 에러가 남. 일단 없이 구현..
-       /* void output(){
-            int count =2;
-         for(Dollars2 dollar:Dollars2.values()){
-             System.out.println(dollar.getText()+lotto_count[count]+"개");
-             count++;
 
-         }*/
+
         }
 
