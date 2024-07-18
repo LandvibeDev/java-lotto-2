@@ -1,19 +1,19 @@
 package lotto.controller;
 
-import lotto.model.LottoMachine;
-import lotto.model.WinningResult;
+import lotto.model.LottoMachineModel;
+import lotto.model.WinningResultModel;
 import lotto.view.ConsoleInput;
 import lotto.view.LottoGame;
 
 public class InstanceManager {
     private final ConsoleInput consoleInput;
-    private final LottoMachine lottoMachine;
-    private final WinningResult winningResult;
+    private final LottoMachineModel lottoMachine;
+    private final WinningResultModel winningResult;
 
     public InstanceManager() {
         this.consoleInput = new ConsoleInput();
-        this.lottoMachine = new LottoMachine();
-        this.winningResult = new WinningResult();
+        this.lottoMachine = new LottoMachineModel();
+        this.winningResult = new WinningResultModel();
     }
 
     public LottoGame lottoGame() {

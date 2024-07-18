@@ -1,17 +1,15 @@
 package lotto.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 // cannot reslove symbol -> gradle rebuild로 해결
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Lotto {
+public class LottoModel {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public LottoModel(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }

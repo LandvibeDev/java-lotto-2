@@ -7,17 +7,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
-public class WinningResult {
+public class WinningResultModel {
     private final Map<RankEnum, Integer> result = new EnumMap<>(RankEnum.class);
 
-    public WinningResult() {
+    public WinningResultModel() {
         for (RankEnum rank : RankEnum.values()) {
             result.put(rank, 0);
         }
     }
 
-    public void checkWinning(List<Lotto> purchasedLottos, Set<Integer> winningNumbers, int bonusNumber) {
-        for (Lotto lotto : purchasedLottos) {
+    public void checkWinning(List<LottoModel> purchasedLottos, Set<Integer> winningNumbers, int bonusNumber) {
+        for (LottoModel lotto : purchasedLottos) {
             Set<Integer> intersection = new HashSet<>(lotto.getNumbers());
             intersection.retainAll(winningNumbers);
             int matchCount = intersection.size();

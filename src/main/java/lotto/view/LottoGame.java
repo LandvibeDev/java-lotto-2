@@ -1,9 +1,8 @@
 package lotto.view;
 
-import lotto.model.Lotto;
-import lotto.model.LottoMachine;
-import lotto.model.WinningResult;
-import lotto.view.ConsoleInput;
+import lotto.model.LottoModel;
+import lotto.model.LottoMachineModel;
+import lotto.model.WinningResultModel;
 
 import java.util.List;
 import java.util.Set;
@@ -12,10 +11,10 @@ public class LottoGame {
 
     private static final int LOTTO_PRICE = 1000;
     private final ConsoleInput consoleInput;
-    private final LottoMachine lottoMachine;
-    private final WinningResult winningResult;
+    private final LottoMachineModel lottoMachine;
+    private final WinningResultModel winningResult;
 
-    public LottoGame(ConsoleInput consoleInput, LottoMachine lottoMachine, WinningResult winningResult) {
+    public LottoGame(ConsoleInput consoleInput, LottoMachineModel lottoMachine, WinningResultModel winningResult) {
         this.consoleInput = consoleInput;
         this.lottoMachine = lottoMachine;
         this.winningResult = winningResult;
@@ -24,7 +23,7 @@ public class LottoGame {
     public void start() {
         try {
             int purchaseAmount = getPurchaseAmount();
-            List<Lotto> purchasedLottos = generateLottos(purchaseAmount);
+            List<LottoModel> purchasedLottos = generateLottos(purchaseAmount);
             printPurchasedLottos(purchasedLottos);
 
             Set<Integer> winningNumbers = getWinningNumbers();
@@ -40,14 +39,14 @@ public class LottoGame {
         return consoleInput.getPurchaseAmount();
     }
 
-    private List<Lotto> generateLottos(int purchaseAmount) {
+    private List<LottoModel> generateLottos(int purchaseAmount) {
         int numberOfLottos = purchaseAmount / LOTTO_PRICE;
         return lottoMachine.generateLottos(numberOfLottos);
     }
 
-    private void printPurchasedLottos(List<Lotto> lottos) {
+    private void printPurchasedLottos(List<LottoModel> lottos) {
         System.out.printf("%d개를 구매했습니다.%n", lottos.size());
-        for (Lotto lotto : lottos) {
+        for (LottoModel lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
@@ -60,7 +59,7 @@ public class LottoGame {
         return consoleInput.getBonusNumber(winningNumbers);
     }
 
-    private void checkAndPrintWinningResult(List<Lotto> purchasedLottos, Set<Integer> winningNumbers, int bonusNumber, int purchaseAmount) {
+    private void checkAndPrintWinningResult(List<LottoModel> purchasedLottos, Set<Integer> winningNumbers, int bonusNumber, int purchaseAmount) {
         winningResult.checkWinning(purchasedLottos, winningNumbers, bonusNumber);
         winningResult.printWinningResult();
 
